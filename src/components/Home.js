@@ -25,12 +25,12 @@ function Home() {
     }
     useEffect(() => {
         if (document.querySelector(".main-img")) {
-            if ((document.querySelector(".main-img").classList[1]).match(/(\d+)/)[0] === "4") {
+            if (imgNum === 4) {
                 document.querySelector(".right-arr").style.display = "none"
             } else {
                 document.querySelector(".right-arr").style.display = "flex"
             }
-            if ((document.querySelector(".main-img").classList[1]).match(/(\d+)/)[0] === "1") {
+            if (imgNum === 1) {
                 document.querySelector(".left-arr").style.display = "none"
             } else {
                 document.querySelector(".left-arr").style.display = "flex"
@@ -38,14 +38,14 @@ function Home() {
         }
     }, [imgNum])
     useEffect(() => {
-        if (window.matchMedia("max-width:992px").matches) {
+        if (window.matchMedia("(max-width:992px)").matches) {
             if (document.querySelector(".main-img")) {
-                if ((document.querySelector(".main-img").classList[1]).match(/(\d+)/)[0] === "4") {
+                if (imgNum === 4) {
                     document.querySelector(".right-arr-home").style.display = "none"
                 } else {
                     document.querySelector(".right-arr-home").style.display = "flex"
                 }
-                if ((document.querySelector(".main-img").classList[1]).match(/(\d+)/)[0] === "1") {
+                if (imgNum === 1) {
                     document.querySelector(".left-arr-home").style.display = "none"
                 } else {
                     document.querySelector(".left-arr-home").style.display = "flex"
@@ -57,6 +57,7 @@ function Home() {
         let matches = str.match(/(\d+)/);
         if (matches[0] !== "4") {
             document.querySelector(`.img${+matches[0] + 1}`).click()
+            console.log(imgNum);
         }
     }
     function checkClassLeft(str) {
